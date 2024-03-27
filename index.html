@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="src/src/jspdf.min.js"></script>
     <title>Personalice y Reserve</title>
 
     <link 
@@ -341,7 +342,6 @@
             </div>
 
         <hr class="my-4">
-
     <button 
         type="submit"
         class="btn btn-primary btn-lg"
@@ -382,21 +382,27 @@
 
 <!--Lo del pdf no sirve, no sé si le piden ayuda a alguien para hacerlo funcionar-->
 <!--Si les ayudan con esto, tienen que cambiar las constantes-->
+
 <script>
-            function CrearViaje() {
+
+            function CrearViaje(Nombres, Apellidos, CorreoElectronico, codigoPais, NumeroTele, validationCiudad, Departamento,
+            infoViaje, infoTransporte, infoGuia, Cantidad, infoAloja, DuracionViaje ) {
     
                 const doc = new jsPDF();
                 doc.setFillColor(28, 41, 51);
                 doc.rect(0, 0, 220, 60, 'f');
-                doc.addImage(imageData, 10, 8, 106, 34);
                 doc.setFontSize(14);
                 doc.setFontType("bold");
                 doc.setTextColor(255, 255, 255);
                 doc.text('OnlineShop 2024', 12, 50);
-                const docpdf = `${primerNombre} ${segundoNombre} ${primerApellido} 
-                ${segundoApellido} ${CorreoElectronico} ${ValidationCiudad} ${Departamento}.pdf`;
+                const docpdf = `${Nombres} ${Apellidos}
+                ${CorreoElectronico} ${codigoPais} ${NumeroTele} 
+                ${validationCiudad} ${Departamento}
+                ${infoViaje} ${infoTransporte} ${infoGuia}
+                ${Cantidad} ${infoAloja} ${DuracionViaje}.pdf`;
                 doc.save(docpdf);
             }
         </script>
+        
 </body>
 </html>
